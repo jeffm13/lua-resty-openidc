@@ -86,7 +86,7 @@ local function openidc_validate_id_token(opts, id_token)
   end
 
   -- check issued-at timestamp
-  if id_token.iat < (os.time() - 10) then
+  if id_token.iat < (os.time() - 1000) then
     ngx.log(ngx.ERR, "token is not valid yet: id_token.iat=", id_token.iat, ", os.time()=", os.time())
     return false
   end
